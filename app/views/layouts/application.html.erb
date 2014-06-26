@@ -14,14 +14,31 @@
   <nav class="top-bar" data-topbar>
   <ul class="title-area">
     <li class="name">
-      <h1><a href="#">ParkMe</a></h1>
+     <h1><a href="parks#index">ParkMe</a></h1>
     </li>
      <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
   </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="has-dropdown">
+        <a href="#">What Park?</a>
+        <ul class="dropdown">
+          <li><a href="basketball_search">Basketball</a></li>
+          <li><a href="tennis_search">Tennis</a></li>
+          <li><a href="soccer_search">Soccer</a></li>
+          <li><a href="track_search">Track</a></li>
+          <li><a href="dog_search">Dog</a></li>
+          <li><a href="playground_search">Playground</a></li>
+        </ul>
+      </li>
+    </ul>
 </nav>
 
   <body>
+
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>
