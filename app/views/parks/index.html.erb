@@ -2,13 +2,13 @@
 <div id="map_canvas"></div>
 <div class="parks_index_container">
 	<div id="control_container" class="row">
-		<div id="map_search" class="large-12 columns">
-			<form>
-				<input type="text">
-				<a id="map_search_submit" class="button" href="#">SEARCH</a>
-			</form>
-		</div>
 		<div id="results" class="large-6 columns"></div>
 		<div class="large-6 columns"></div>
 	</div>
+</div>
+
+
+<div id="search_modal" class="reveal-modal" data-reveal>
+     <%= render partial: 'parks/form', :controller=>"parks", :action =>"post" %>
+     <a class="close-reveal-modal">X</a>
 </div>

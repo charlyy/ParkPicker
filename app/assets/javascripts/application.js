@@ -28,9 +28,7 @@ $(document).ready(function() {
   initialize();
 });
 
-/**
- * Initializes the map and some events on page load
- */
+/* Initializes the map and some events on page load */
 var initialize = function() {
   // Define some options for the map
   var mapOptions = {
@@ -55,11 +53,8 @@ var initialize = function() {
   bind_controls(map);
 }
 
-/**
- * Bind and setup search control for the map
- *
- * param: map - the Google map object
- */
+/* Bind and setup search control for the map
+  param: map - the Google map object */
 var bind_controls = function(map) {
   // get the container for the search control and bind and event to it on submit
   var controlContainer = $('#control_container')[0];
@@ -116,12 +111,8 @@ var bind_controls = function(map) {
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(controlContainer);
 }
 
-/**
- * Makes a post request to the server with the search term and
- * populates the map with the response businesses
- *
- * param: map - the Google map object
- */
+/* Makes a post request to the server with the search term and populates the map with the response businesses
+ map - the Google map object */
 var search = function(map) {
   var searchTerm = $('#map_search input[type=text]').val();
 
@@ -250,5 +241,46 @@ var searchPlayground = function(map) {
   });
 };
 
+/* Geocode the address from the business and drop a marker on it's location on the map.
+  map - the Google map object to drop a marker on
+  name - the name of the business, used for when you hover over the dropped marker
+  location_object - an object of the businesses address */
+var geocode_address = function(map, name, location_object) {
+  var geocoder = new google.maps.Geocoder();
+
+  var address = [
+    location_object['address'][0],
+    location_object['city'],
+    location_object['country_code']
+  ].join(', ');
+
+  // geocode the address and get the lat/lng
+  geocoder.geocode({address: address}, function(results, status) {
+    if (status === google.maps.GeocoderStatus.OK) {
+
+      // create a marker and drop it on the name on the geocoded location
+      var marker = new google.maps.Marker({
+        animation: google.maps.Animation.DROP,
+        map: map,
+        position: results[0].geometry.location,
+        title: name
+      });
+
+      // save the marker object so we can delete it later
+      markersArray.push(marker);
+    } else {
+      console.log("Geocode was not successful for the following reason: " + status);
+    }
+  });
+};
+
+/* Remove all of the markers from the map by setting them to null */
+var clearMarkers = function() {
+  markersArray.forEach(function(marker) {
+    marker.setMap(null);
+  });
+
+  markersArray = [];
+};
 
 

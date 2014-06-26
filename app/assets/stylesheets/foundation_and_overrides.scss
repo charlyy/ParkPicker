@@ -1324,15 +1324,16 @@ html, body {
   box-shadow: 2px 2px 3px #999;
   -moz-box-shadow: 2px 2px 3px #999;
   -webkit-box-shadow: 2px 2px 3px #999;
-  width: 40%;
+  width: 100%;
  
 }
 
 #map_search input[type=text] {
-  border: 1px solid #fff;
+  border: 2px solid #fff;
   padding-left: 7px;
   height: 29px;
-  width: 85%;
+  width: 100%;
+  font-size: 20px;
 }
 
 #map_search input[type=text]:focus {
