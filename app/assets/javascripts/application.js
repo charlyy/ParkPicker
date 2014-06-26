@@ -283,4 +283,37 @@ var clearMarkers = function() {
   markersArray = [];
 };
 
+/* Capture the specific business objects within a closure for setTimeout or else it'll execute only on the last business in the array
+ 
+  param: i - the index the business was at in the array, used to the          timeout delay
+  param: map - the Google map object used for geocoding and marker placement
+  param: business - the business object from the response
+ */
+var capture = function(i, map, business) {
+  setTimeout(function() {
+    if (i === 15) {
+      inactive = false;
+    }
+
+    $('#results').append(results_builder(business));
+
+    // get the geocoded address for the business's location
+    geocode_address(map, business['name'], business['location']);
+  }, QUERY_DELAY * i); // the delay on the timeout
+};
+
+/* Builds the div with results from API
+   param: business - object of the business response */
+var results_builder = function(business) {
+  return [
+      '<div class="result">',
+      '<img class="biz_img" src="', business['image_url'], '">',
+      '<h3><a href="', business['url'] ,'" target="_blank">', business['name'], '</a></h3>',
+      '<img src="', business['rating_img_url'], '">',
+      '<p>', business['location.address'], '</p>',
+      '<p class="clear-fix"></p>',
+    '</div>'
+  ].join('');
+};
+
 
