@@ -6,6 +6,12 @@ Parkme::Application.routes.draw do
   resources :parks
   root 'parks#index'
   post '/search' => 'parks#search'
+  post '/basketball_search' => 'parks#search'
+  post '/tennis_search' => 'parks#search'
+  post '/soccer_search' => 'parks#search'
+  post '/track_search' => 'parks#search'
+  post '/playground_search' => 'parks#search'
+  post '/dog_search' => 'parks#search'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
