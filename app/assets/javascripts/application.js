@@ -81,6 +81,37 @@ var bind_controls = function(map) {
     searchBasketball(map);
   });
 
+
+  var tennis_button = $('#tennis_search')[0];
+  google.maps.event.addDomListener(tennis_button, 'click', function(e) {
+    e.preventDefault();
+    searchTennis(map);
+  });
+
+  var soccer_button = $('#soccer_search')[0];
+  google.maps.event.addDomListener(soccer_button, 'click', function(e) {
+    e.preventDefault();
+    searchSoccer(map);
+  });
+
+  var track_button = $('#track_search')[0];
+  google.maps.event.addDomListener(track_button, 'click', function(e) {
+    e.preventDefault();
+    searchTrack(map);
+  });
+
+  var dog_button = $('#dog_search')[0];
+  google.maps.event.addDomListener(dog_button, 'click', function(e) {
+    e.preventDefault();
+    searchDog(map);
+  });
+
+  var playground_button = $('#playground_search')[0];
+  google.maps.event.addDomListener(playground_button, 'click', function(e) {
+    e.preventDefault();
+    searchPlayground(map);
+  });
+
   // push the search controls onto the map
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(controlContainer);
 }
@@ -116,17 +147,14 @@ var search = function(map) {
 
 var searchBasketball = function(map) {
   if (inactive === true) { return };
-
   // post to the search with the search term, take the response data
   // and process it
   $.post('/search', { term: "basketball" }, function(data) {
     inactive = true;
-
     // do some clean up
     $('#results').show();
     $('#results').empty();
     clearMarkers();
-
     // iterate through each business in the response capture the data
     // within a closure.
     data['businesses'].forEach(function(business, index) {
@@ -134,5 +162,93 @@ var searchBasketball = function(map) {
     });
   });
 };
+
+var searchTennis = function(map) {
+  // post to the search with the search term, take the response data
+  // and process it
+  $.post('/search', { term: "tennis" }, function(data) {
+    inactive = true;
+    // do some clean up
+    $('#results').show();
+    $('#results').empty();
+    clearMarkers();
+    // iterate through each business in the response capture the data
+    // within a closure.
+    data['businesses'].forEach(function(business, index) {
+      capture(index, map, business);
+    });
+  });
+};
+
+var searchSoccer = function(map) {
+  // post to the search with the search term, take the response data
+  // and process it
+  $.post('/search', { term: "soccer" }, function(data) {
+    inactive = true;
+    // do some clean up
+    $('#results').show();
+    $('#results').empty();
+    clearMarkers();
+    // iterate through each business in the response capture the data
+    // within a closure.
+    data['businesses'].forEach(function(business, index) {
+      capture(index, map, business);
+    });
+  });
+};
+
+
+var searchTrack = function(map) {
+  // post to the search with the search term, take the response data
+  // and process it
+  $.post('/search', { term: "track" }, function(data) {
+    inactive = true;
+    // do some clean up
+    $('#results').show();
+    $('#results').empty();
+    clearMarkers();
+    // iterate through each business in the response capture the data
+    // within a closure.
+    data['businesses'].forEach(function(business, index) {
+      capture(index, map, business);
+    });
+  });
+};
+
+
+var searchDog = function(map) {
+  // post to the search with the search term, take the response data
+  // and process it
+  $.post('/search', { term: "dog" }, function(data) {
+    inactive = true;
+    // do some clean up
+    $('#results').show();
+    $('#results').empty();
+    clearMarkers();
+    // iterate through each business in the response capture the data
+    // within a closure.
+    data['businesses'].forEach(function(business, index) {
+      capture(index, map, business);
+    });
+  });
+};
+
+var searchPlayground = function(map) {
+  // post to the search with the search term, take the response data
+  // and process it
+  $.post('/search', { term: "playground" }, function(data) {
+    inactive = true;
+    // do some clean up
+    $('#results').show();
+    $('#results').empty();
+    clearMarkers();
+    // iterate through each business in the response capture the data
+    // within a closure.
+    data['businesses'].forEach(function(business, index) {
+      capture(index, map, business);
+    });
+  });
+};
+
 
 
