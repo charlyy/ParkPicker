@@ -18,8 +18,8 @@
 $(function(){ $(document).foundation(); });
 
 var markersArray = [];
-var SM_LAT = 34.0219;
-var SM_LNG = -118.4814;
+var SM_LAT = 34.00863;
+var SM_LNG = -118.4896;
 var QUERY_DELAY = 400;
 var inactive = false;
 
