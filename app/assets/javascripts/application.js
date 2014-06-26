@@ -17,11 +17,12 @@
 
 $(function(){ $(document).foundation(); });
 
-var markersArray = [];
+
 var SM_LAT = 34.00863;
 var SM_LNG = -118.4896;
-var QUERY_DELAY = 400;
+var QUERY_DELAY = 850;
 var inactive = false;
+var markersArray = [];
 
 $(document).ready(function() {
   // initialize the map on load
@@ -33,7 +34,7 @@ var initialize = function() {
   // Define some options for the map
   var mapOptions = {
     center: new google.maps.LatLng(SM_LAT, SM_LNG),
-    zoom: 14,
+    zoom: 13,
 
     // hide controls
     panControl: false,

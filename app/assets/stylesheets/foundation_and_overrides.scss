@@ -1186,7 +1186,7 @@
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-// $topbar-bg-color: #333;
+$topbar-bg-color: rgba(150,250,100,.5);
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
@@ -1361,7 +1361,7 @@ html, body {
   -ms-animation: fadein 1.5s; /* Internet Explorer */
   -o-animation: fadein 1.5s; /* Opera */
 
-  background: #fff;
+  background: rgba(100,100,100,.7);
   border: 3px solid #e5e5e1;
   display: inline-block;
   margin-right: 5px;
@@ -1374,19 +1374,23 @@ html, body {
 #results .result p {
   margin: 0;
 }
-
-.result a {
+.result {
+	h3 {
+	  font-size: 12px;
+	  margin-top: 0px;
+	  margin-bottom: 5px;
+	  overflow: hidden;
+	  width: 100px;
+	  white-space: nowrap;
+	}
+	a {
 	text-align: center;
+	}
 }
 
-.result h3 {
-  font-size: 12px;
-  margin-top: 0px;
-  margin-bottom: 5px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100px;
-  white-space: nowrap;
+.sports_logos {
+	height: 18px;
+	width: 18px;
 }
 
 .clear-fix {
