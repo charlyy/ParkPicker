@@ -18,9 +18,9 @@
 $(function(){ $(document).foundation(); });
 
 
-var SM_LAT = 34.00863;
-var SM_LNG = -118.4896;
-var QUERY_DELAY = 850;
+var sm_lat = 34.00863;
+var sm_lng = -118.4896;
+var query_delay = 850;
 var inactive = false;
 var markersArray = [];
 
@@ -33,7 +33,7 @@ $(document).ready(function() {
 var initialize = function() {
   // Define some options for the map
   var mapOptions = {
-    center: new google.maps.LatLng(SM_LAT, SM_LNG),
+    center: new google.maps.LatLng(sm_lat, sm_lng),
     zoom: 13,
 
     // hide controls
@@ -300,7 +300,7 @@ var capture = function(i, map, business) {
 
     // get the geocoded address for the business's location
     geocode_address(map, business['name'], business['location']);
-  }, QUERY_DELAY * i); // the delay on the timeout
+  }, query_delay * i); // the delay on the timeout
 };
 
 /* Builds the div with results from API
