@@ -3,8 +3,9 @@ Parkme::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-
+  resources :parks
+  root 'parks#index'
+  post '/search' => 'parks#search'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
