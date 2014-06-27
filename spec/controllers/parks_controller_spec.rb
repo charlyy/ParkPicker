@@ -10,6 +10,12 @@ RSpec.describe ParksController, :type => :controller do
     end
   end
 
+  describe 'search' do
+    it 'should return results' do
+      get :search, expect(response).to be_success
+      end
+  end
+end
 
 
 
