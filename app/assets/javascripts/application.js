@@ -17,7 +17,6 @@
 
 $(function(){ $(document).foundation(); });
 
-
 var sm_lat = 34.00863;
 var sm_lng = -118.4896;
 var query_delay = 850;
@@ -50,7 +49,7 @@ var initialize = function() {
 
   // create a new Google map with the options in the map element
   var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
-
+  // initialize the bind_controls t othe map
   bind_controls(map);
 }
 
@@ -58,7 +57,7 @@ var initialize = function() {
   param: map - the Google map object */
 var bind_controls = function(map) {
   // get the container for the search control and bind and event to it on submit
-  var controlContainer = $('#control_container')[0];
+  var controlContainer = $('#map_search_submit')[0];
   google.maps.event.addDomListener(controlContainer, 'submit', function(e) {
     e.preventDefault();
     search(map);
@@ -70,38 +69,38 @@ var bind_controls = function(map) {
     e.preventDefault();
     search(map);
   });
-
+  // automatically inputs "basketball" in the Yelp.Client search and displays markers on the map
   var basketball_button = $('#basketball_search')[0];
   google.maps.event.addDomListener(basketball_button, 'click', function(e) {
     e.preventDefault();
     searchBasketball(map);
   });
 
-
+  // automatically inputs "tennis" in the Yelp.Client search and displays markers on the map
   var tennis_button = $('#tennis_search')[0];
   google.maps.event.addDomListener(tennis_button, 'click', function(e) {
     e.preventDefault();
     searchTennis(map);
   });
-
+  // automatically inputs "soccer" in the Yelp.Client search and displays markers on the map
   var soccer_button = $('#soccer_search')[0];
   google.maps.event.addDomListener(soccer_button, 'click', function(e) {
     e.preventDefault();
     searchSoccer(map);
   });
-
+  // automatically inputs "track" in the Yelp.Client search and displays markers on the maps
   var track_button = $('#track_search')[0];
   google.maps.event.addDomListener(track_button, 'click', function(e) {
     e.preventDefault();
     searchTrack(map);
   });
-
+  // automatically inputs "dog" in the Yelp.Client search and displays markers on the map
   var dog_button = $('#dog_search')[0];
   google.maps.event.addDomListener(dog_button, 'click', function(e) {
     e.preventDefault();
     searchDog(map);
   });
-
+  // automatically inputs "playground" in the Yelp.Client search and displays markers on the map
   var playground_button = $('#playground_search')[0];
   google.maps.event.addDomListener(playground_button, 'click', function(e) {
     e.preventDefault();
@@ -280,12 +279,10 @@ var clearMarkers = function() {
   markersArray.forEach(function(marker) {
     marker.setMap(null);
   });
-
   markersArray = [];
 };
 
 /* Capture the specific business objects within a closure for setTimeout or else it'll execute only on the last business in the array
- 
   param: i - the index the business was at in the array, used to the          timeout delay
   param: map - the Google map object used for geocoding and marker placement
   param: business - the business object from the response
@@ -294,10 +291,8 @@ var capture = function(i, map, business) {
   setTimeout(function() {
     if (i === 15) {
       inactive = false;
-    }
-
+    } 
     $('#results').append(results_builder(business));
-
     // get the geocoded address for the business's location
     geocode_address(map, business['name'], business['location']);
   }, query_delay * i); // the delay on the timeout
