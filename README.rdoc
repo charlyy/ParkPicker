@@ -5,6 +5,4 @@ A single-page application that uses Google Maps with the Yelp API.
 
 Built with Ruby on Rails, HTML5, CSS3, Javascript, PostgreSQL and Zurb Foundation.
 
-
-Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
